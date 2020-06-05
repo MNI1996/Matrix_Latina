@@ -1,12 +1,17 @@
-import javafx.collections.transformation.SortedList;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class OrderList {
-    private SortedList matrixLatina;
+    private ArrayList<Integer> list;
 
-public synchronized void add(int indice){
-    this.matrixLatina.add(indice);
-}
+    public OrderList(){
+        list = new ArrayList();
+    }
 
+    public synchronized void add(int indice){
+        this.list.add(indice);
+        Collections.sort(this.list);
+    }
 
 }
 

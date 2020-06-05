@@ -1,4 +1,3 @@
-interface Task extends Runnable {
-    void run();
-    boolean calculate();
+interface Task {
+    void execute(LatinWorker worker);
 }

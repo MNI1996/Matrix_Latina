@@ -16,9 +16,7 @@ class Buffer {
         while (isFull())
             try {
                 wait();
-                System.out.println("Esperando");
             } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         data[begin] = o ;
@@ -31,7 +29,6 @@ class Buffer {
             try {
                 wait();
             } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         Task result = data[end];
@@ -41,7 +38,7 @@ class Buffer {
     }
 
     private boolean isEmpty() { return begin == end; }
-    private boolean isFull() { return next( begin ) == end; }
-    private int next(int i) { return (i+1)%(this.N+1); }
+    private boolean isFull() { return next(begin) == end; }
+    private int next(int i) { return (i + 1) % (this.N + 1); }
 }
 

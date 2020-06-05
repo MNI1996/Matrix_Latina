@@ -2,13 +2,17 @@ public class ThreadPool {
 
     private Buffer task_buffer;
 
+    private OrderList oList;
+
     private int cantWork;
 
     public ThreadPool(int dimTaskBuffer, int cantWork){
+        this.oList = new OrderList();
         this.task_buffer = new Buffer(dimTaskBuffer);
         this.cantWork = cantWork;
+
         for(Integer i : Utils.range(0, cantWork)){
-            new LatinWorker(task_buffer).start();
+            new LatinWorker(task_buffer, oList).start();
         }
     }
 

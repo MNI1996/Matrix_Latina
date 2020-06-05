@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Matrix {
@@ -26,13 +28,39 @@ public class Matrix {
         return columns;
     }
 
+    public int[][] getData() {
+        return data;
+    }
+
     /** * fills matrix from data entered by user in console * * @param rows * @param columns */
-    public void read(Scanner s) {
+    /*public void read(Scanner s) {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
                 data[i][j] = s.nextInt();
             }
         }
+    }*/
+
+    /** * fills matrix from data entered by user in console * * @param rows * @param columns */
+    public void read(ArrayList<Integer> listN) {
+        ArrayList<List<Integer>> otraList = listaDeListas(listN);
+
+        int i = 0;
+        for(List<Integer> ls : otraList){
+            for (int j = 0; j < columns; j++) {
+                data[i][j] = listN.get(j);
+            }
+            i++;
+        }
+    }
+
+    public ArrayList<List<Integer>> listaDeListas(ArrayList<Integer> listN){
+        ArrayList<List<Integer>> resList = new ArrayList<>();
+        for(int i = 0; i < columns; i++){
+            List<Integer> otraList = listN.subList(i*columns, (columns * (i + 1)));
+            resList.add(otraList);
+        }
+        return resList;
     }
 
     /** * This method will transpose this matrix * * @return */

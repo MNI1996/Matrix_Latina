@@ -1,8 +1,10 @@
 public class LatinWorker extends Thread {
 
     private Buffer task_buffer;
-    private OrderList output= new OrderList();
-    public LatinWorker(Buffer buff){
+    private OrderList oList;
+
+    public LatinWorker(Buffer buff, OrderList oList){
+        this.oList = oList;
         this.task_buffer = buff;
     }
 
@@ -11,9 +13,7 @@ public class LatinWorker extends Thread {
         try{
             while(true){
                 Task task = task_buffer.read();
-                if (task.calculate()){
-                    saveIndex(i);
-                }
+                task.execute(this);
             }
         }catch(PoisonException e){
             System.out.println(e.getMessage());
@@ -21,7 +21,6 @@ public class LatinWorker extends Thread {
     }
 
     public void saveIndex(int index){
-        this.output.add(index);
-
+        this.oList.add(index);
     }
 }

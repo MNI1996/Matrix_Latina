@@ -1,4 +1,4 @@
-class PoisonPill implements Task{
+class PoisonPill implements Task {
 
     private int number;
 
@@ -6,7 +6,8 @@ class PoisonPill implements Task{
         this.number = number;
     }
 
-    public void run(){
-        throw new PoisonException("Me muero :(");
+    public void execute(LatinWorker worker){
+        throw new PoisonException("Se acabo lo que se daba");
     }
+
 }
