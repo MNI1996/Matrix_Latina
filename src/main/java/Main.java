@@ -39,16 +39,18 @@ public class Main {
         }
         */
 
-        String st2 = "5 1 2 3 4 5 2 3 4 5 1 3 4 5 1 2 4 5 1 3 2 5 1 2 3 4";
+        //String st2 = "5 1 2 3 4 5 2 3 4 5 1 3 4 5 1 2 4 5 1 3 2 5 1 2 3 4";
+        String st2 = "5 1 2 3 4 5 6 7 8 9 1 2 3 4 5 6 7 8 9 1 2 3 4 5 6 7 8";
         char[] chars = st2.toCharArray();
         String[] res = parseListString(chars,count(st2) + 1);
         ArrayList<Integer> res2 = parseListInteger(res);
         System.out.println(res2.get(0));
         Matrix matriz = new Matrix(res2.get(0), res2.get(0));
         int elCinco = res2.remove(0);
-        Scanner myObj = new Scanner(System.in);
+        //Scanner myObj = new Scanner(System.in);
 
-        matriz.listaDeListas(res2);
+        System.out.println(matriz.listaDeListas(res2));
+        System.out.println(matriz.transposeList(res2));
 
         int noLatino = res2.stream().filter(n -> n > elCinco).toArray().length;
 
@@ -57,8 +59,8 @@ public class Main {
         }else{
             System.out.println("Es latino");
         }
-
-        matriz.print();
+        matriz.sinRepetidos(res2);
+        //matriz.print();
         //System.out.println(res2);
 
     }
@@ -100,5 +102,6 @@ public class Main {
             listS[i] = "";
         }
     }
+
 
 }

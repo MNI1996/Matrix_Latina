@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Matrix {
 
@@ -63,8 +61,30 @@ public class Matrix {
         return resList;
     }
 
+    public ArrayList<List<Integer>> transposeList(ArrayList<Integer> listN){
+        ArrayList<List<Integer>> resList = new ArrayList<>();
+        ArrayList<List<Integer>> listOfList = this.listaDeListas(listN);
+        for(int i = 0; i < columns; i++){
+            ArrayList<Integer> auxList = new ArrayList<>();
+            for(List<Integer>lista : listOfList){
+                int elem = lista.get(i);
+                auxList.add(elem);
+            }
+            resList.add(auxList);
+        }
+        return resList;
+    }
+
+    public int sinRepetidos(ArrayList<Integer> list){
+        Set<Integer> listToSet = new HashSet<>(list);
+        System.out.println(listToSet);
+        return listToSet.size();
+    }
+
+
+
     /** * This method will transpose this matrix * * @return */
-    public void transpose() {
+ /*   public void transpose() {
         int[][] temp = new int[columns][rows];
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
@@ -73,7 +93,7 @@ public class Matrix {
         }
         data = temp;
     } /** * * @param matrix */
-
+/*
     public void print() {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
@@ -82,7 +102,7 @@ public class Matrix {
             System.out.println();
          }
     }
-
+*/
 }
 
 
