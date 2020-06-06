@@ -75,11 +75,11 @@ public class Matrix {
         return resList;
     }
 
-    public int sinRepetidos(ArrayList<Integer> list){
+    /*public int sinRepetidos(ArrayList<Integer> list){
         Set<Integer> listToSet = new HashSet<>(list);
         System.out.println(listToSet);
         return listToSet.size();
-    }
+    }*/
 
 
 

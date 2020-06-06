@@ -42,8 +42,8 @@ public class Main {
         }
         */
 
-        //String st2 = "5 1 2 3 4 5 2 3 4 5 1 3 4 5 1 2 4 5 1 3 2 5 1 2 3 4";
-          String st2 = "5 1 2 3 4 5 6 7 8 9 1 2 3 4 5 6 7 8 9 1 2 3 4 5 6 7 8";
+        String st2 = "5 1 2 3 4 5 2 3 4 5 1 3 4 5 1 2 4 5 1 3 2 5 1 2 3 4";
+          //String st2 = "5 1 3 4 5 6 7 8 9 1 2 3 4 5 6 7 8 9 1 2 3 4 5 6 7 8";
 //        List<Integer> numeritos = Arrays.stream(st2.split(" "))
 //                .map(st -> Integer.parseInt(st))
 //                .collect(Collectors.toList());
