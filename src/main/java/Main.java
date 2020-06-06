@@ -1,6 +1,9 @@
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Main {
 
@@ -41,13 +44,13 @@ public class Main {
 
         //String st2 = "5 1 2 3 4 5 2 3 4 5 1 3 4 5 1 2 4 5 1 3 2 5 1 2 3 4";
         String st2 = "5 1 2 3 4 5 6 7 8 9 1 2 3 4 5 6 7 8 9 1 2 3 4 5 6 7 8";
-        char[] chars = st2.toCharArray();
-        String[] res = parseListString(chars,count(st2) + 1);
-        ArrayList<Integer> res2 = parseListInteger(res);
-        System.out.println(res2.get(0));
+        List<Integer> numeritos = Arrays.stream(st2.split(" "))
+                .map(st -> Integer.parseInt(st))
+                .collect(Collectors.toList());
+        ArrayList<Integer> res2 = new ArrayList<>(numeritos);
+
         Matrix matriz = new Matrix(res2.get(0), res2.get(0));
         int elCinco = res2.remove(0);
-        //Scanner myObj = new Scanner(System.in);
 
         System.out.println(matriz.listaDeListas(res2));
         System.out.println(matriz.transposeList(res2));
@@ -60,48 +63,7 @@ public class Main {
             System.out.println("Es latino");
         }
         matriz.sinRepetidos(res2);
-        //matriz.print();
-        //System.out.println(res2);
 
     }
-
-    public static int count(String st){
-        int cont = 0;
-        for (char c : st.toCharArray()){
-            if(c == ' '){
-                cont++;
-            }
-        }
-        return cont;
-    }
-
-    public static String[] parseListString(char[] chars, int dim){
-        String[] res = new String[dim];
-        initilizeArray(res);
-        int index = 0;
-        for(int i=0; i < chars.length; i++){
-            if(chars[i] != ' '){
-                res[index] = res[index] + chars[i];
-            }else{
-                index++;
-            }
-        }
-        return res;
-    }
-
-    public static ArrayList<Integer> parseListInteger(String[] listS) {
-        ArrayList<Integer> res = new ArrayList<>();
-        for(int i=0; i < listS.length; i++) {
-            res.add(Integer.parseInt(listS[i]));
-        }
-        return res;
-    }
-
-    public static void initilizeArray(String[] listS){
-        for(int i=0; i < listS.length; i++) {
-            listS[i] = "";
-        }
-    }
-
 
 }

@@ -40,7 +40,7 @@ public class Matrix {
     }*/
 
     /** * fills matrix from data entered by user in console * * @param rows * @param columns */
-    public void read(ArrayList<Integer> listN) {
+    /*public void read(ArrayList<Integer> listN) {
         ArrayList<List<Integer>> otraList = listaDeListas(listN);
 
         int i = 0;
@@ -50,7 +50,7 @@ public class Matrix {
             }
             i++;
         }
-    }
+    }*/
 
     public ArrayList<List<Integer>> listaDeListas(ArrayList<Integer> listN){
         ArrayList<List<Integer>> resList = new ArrayList<>();
