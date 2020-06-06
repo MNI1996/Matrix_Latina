@@ -13,7 +13,7 @@ public class LatinWorker extends Thread {
         try{
             while(true){
                 Task task = task_buffer.read();
-                task.execute(this);
+                task.execute();
             }
         }catch(PoisonException e){
             System.out.println(e.getMessage());

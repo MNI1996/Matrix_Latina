@@ -6,7 +6,7 @@ class PoisonPill implements Task {
         this.number = number;
     }
 
-    public void execute(LatinWorker worker){
+    public boolean execute(){
         throw new PoisonException("Se acabo lo que se daba");
     }
 

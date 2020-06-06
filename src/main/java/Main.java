@@ -43,27 +43,30 @@ public class Main {
         */
 
         //String st2 = "5 1 2 3 4 5 2 3 4 5 1 3 4 5 1 2 4 5 1 3 2 5 1 2 3 4";
-        String st2 = "5 1 2 3 4 5 6 7 8 9 1 2 3 4 5 6 7 8 9 1 2 3 4 5 6 7 8";
-        List<Integer> numeritos = Arrays.stream(st2.split(" "))
-                .map(st -> Integer.parseInt(st))
-                .collect(Collectors.toList());
-        ArrayList<Integer> res2 = new ArrayList<>(numeritos);
+          String st2 = "5 1 2 3 4 5 6 7 8 9 1 2 3 4 5 6 7 8 9 1 2 3 4 5 6 7 8";
+//        List<Integer> numeritos = Arrays.stream(st2.split(" "))
+//                .map(st -> Integer.parseInt(st))
+//                .collect(Collectors.toList());
+//        ArrayList<Integer> res2 = new ArrayList<>(numeritos);
+//
+//        Matrix matriz = new Matrix(res2.get(0), res2.get(0));
+//        int elCinco = res2.remove(0);
+//
+//        System.out.println(matriz.listaDeListas(res2));
+//        System.out.println(matriz.transposeList(res2));
+//
+//        int noLatino = res2.stream().filter(n -> n > elCinco).toArray().length;
+//
+//        if(noLatino > 0){
+//            System.out.println("No es latino");
+//        }else{
+//            System.out.println("Es latino");
+//        }
+//        matriz.sinRepetidos(res2);
+//
+//    }
+       ParceMatrix pm= new ParceMatrix(st2);
+        System.out.println(pm.execute());
 
-        Matrix matriz = new Matrix(res2.get(0), res2.get(0));
-        int elCinco = res2.remove(0);
-
-        System.out.println(matriz.listaDeListas(res2));
-        System.out.println(matriz.transposeList(res2));
-
-        int noLatino = res2.stream().filter(n -> n > elCinco).toArray().length;
-
-        if(noLatino > 0){
-            System.out.println("No es latino");
-        }else{
-            System.out.println("Es latino");
-        }
-        matriz.sinRepetidos(res2);
-
-    }
-
+}
 }

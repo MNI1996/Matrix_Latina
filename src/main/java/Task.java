@@ -1,3 +1,3 @@
 interface Task {
-    void execute(LatinWorker worker);
+    boolean execute();
 }
