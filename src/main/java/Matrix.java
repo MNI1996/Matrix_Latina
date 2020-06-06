@@ -2,21 +2,46 @@ import java.util.*;
 
 public class Matrix {
 
-    private int rows;
-    private int columns;
-    private int[][] data;
+    private int dimension;
 
-    public Matrix(int row, int column) {
-        this.rows = row;
-        this.columns = column;
-        data = new int[rows][columns];
+    public Matrix(int dim) {
+        this.dimension = dim;
     }
+
+    public ArrayList<List<Integer>> listaDeListas(ArrayList<Integer> listN){
+        ArrayList<List<Integer>> resList = new ArrayList<>();
+        for(int i = 0; i < dimension; i++){
+            List<Integer> otraList = listN.subList(i* dimension, (dimension * (i + 1)));
+            resList.add(otraList);
+        }
+        return resList;
+    }
+
+    public ArrayList<List<Integer>> transposeList(ArrayList<Integer> listN){
+        ArrayList<List<Integer>> resList = new ArrayList<>();
+        ArrayList<List<Integer>> listOfList = this.listaDeListas(listN);
+        for(int i = 0; i < dimension; i++){
+            ArrayList<Integer> auxList = new ArrayList<>();
+            for(List<Integer>lista : listOfList){
+                int elem = lista.get(i);
+                auxList.add(elem);
+            }
+            resList.add(auxList);
+        }
+        return resList;
+    }
+
+
+
+
+    /*
 
     public Matrix(int[][] data) {
         this.data = data;
         this.rows = data.length;
         this.columns = data[0].length;
     }
+
 
     public int getRows(){
         return rows;
@@ -29,6 +54,9 @@ public class Matrix {
     public int[][] getData() {
         return data;
     }
+
+*/
+
 
     /** * fills matrix from data entered by user in console * * @param rows * @param columns */
     /*public void read(Scanner s) {
@@ -51,29 +79,6 @@ public class Matrix {
             i++;
         }
     }*/
-
-    public ArrayList<List<Integer>> listaDeListas(ArrayList<Integer> listN){
-        ArrayList<List<Integer>> resList = new ArrayList<>();
-        for(int i = 0; i < columns; i++){
-            List<Integer> otraList = listN.subList(i*columns, (columns * (i + 1)));
-            resList.add(otraList);
-        }
-        return resList;
-    }
-
-    public ArrayList<List<Integer>> transposeList(ArrayList<Integer> listN){
-        ArrayList<List<Integer>> resList = new ArrayList<>();
-        ArrayList<List<Integer>> listOfList = this.listaDeListas(listN);
-        for(int i = 0; i < columns; i++){
-            ArrayList<Integer> auxList = new ArrayList<>();
-            for(List<Integer>lista : listOfList){
-                int elem = lista.get(i);
-                auxList.add(elem);
-            }
-            resList.add(auxList);
-        }
-        return resList;
-    }
 
     /*public int sinRepetidos(ArrayList<Integer> list){
         Set<Integer> listToSet = new HashSet<>(list);
