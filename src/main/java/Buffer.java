@@ -1,6 +1,6 @@
 
 
-class Buffer {
+public class Buffer {
 
     private Task[] data;
     private int N;

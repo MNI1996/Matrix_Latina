@@ -1,14 +1,16 @@
+import com.sun.xml.internal.ws.api.model.wsdl.editable.EditableWSDLMessage;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
 class ParceMatrix implements Task {
 
-    private int number;
+    private int taskNumber;
     private String line;
 
-    public ParceMatrix(String line) {
+    public ParceMatrix(String line, int number) {
         this.line = line;
-        this.number = number;
+        this.taskNumber = number;
     }
 
     public boolean execute() {
@@ -17,19 +19,17 @@ class ParceMatrix implements Task {
                 .collect(Collectors.toList());
         ArrayList<Integer> res2 = new ArrayList<>(numeritos);
         int dimension = res2.remove(0);
-        this.number = dimension;
-        System.out.println("Ejecutando: " + this.number);
 
-        Matrix matriz = new Matrix(dimension);
+        System.out.println("Ejecutando: " + this.taskNumber);
 
-        System.out.println(matriz.listaDeListas(res2));
-        System.out.println(matriz.transposeList(res2));
+        Matrix matriz = new Matrix(dimension, res2);
 
-        boolean noMayoresQue = res2.stream().anyMatch(n -> n > dimension);
+        System.out.println(matriz.getMatrix());
+        System.out.println(matriz.getTransposedMatrix());
 
-        return !noMayoresQue &&
-               cumpleCondiciónDeLatino(matriz.listaDeListas(res2), dimension) &&
-               cumpleCondiciónDeLatino(matriz.transposeList(res2), dimension) ;
+        return !this.noMayoresQue(res2, dimension) &&
+               cumpleCondiciónDeLatino(matriz.getMatrix(), dimension) &&
+               cumpleCondiciónDeLatino(matriz.getTransposedMatrix(), dimension);
     }
 
     public int sinRepetidos(List<Integer> list) {
@@ -46,46 +46,10 @@ class ParceMatrix implements Task {
         return res;
     }
 
-
-
-
-    /*public boolean cumpleMatrizNormal(ArrayList<List<Integer>> lists, int dimension) {
-        boolean res = false;
-        *//*for (List<Integer> i : lists){
-            Set<Integer> listToSet = new HashSet<>(i);
-            res= res && listToSet.size()==this.number;
-        }*//*
-
-        *//*boolean result = lists
-                .stream()
-                .reduce(false, (list, acum) -> acum && (this.sinRepetidos(list) == dimension));*//*
-
-        res = lists.stream().
-                reduce(true, (acum, list) -> acum && (this.sinRepetidos(list) == dimension),
-                        Boolean::logicalAnd);
-
-        return res;
-    }*/
-
-    /*public boolean cumpleMatrizTranspuesta(ArrayList<List<Integer>> lists, int dimension) {
-        boolean res = true;
-        *//*for (List<Integer> i : lists) {
-            Set<Integer> listToSet = new HashSet<>(i);
-            res = res && listToSet.size() == this.number;
-        }*//*
-        res = lists.stream().
-                reduce(true, (acum, list) -> acum && (this.sinRepetidos(list) == dimension),
-                        Boolean::logicalAnd);
-        return res;
-    }*/
-
-
-
-
-
-
-
-
+    public boolean noMayoresQue(ArrayList<Integer> list, int dimension){
+        return list.stream().anyMatch(n -> n > dimension);
+    }
+    
 }
 
 
