@@ -1,23 +1,36 @@
+import java.util.List;
+
 public class LatinWorker extends Thread {
 
     private Buffer task_buffer;
     private OrderList oList;
+    private CountDown countDown;
 
-    public LatinWorker(Buffer buff, OrderList oList){
+
+    public LatinWorker(Buffer buff, OrderList oList, CountDown countDown){
         this.oList = oList;
         this.task_buffer = buff;
+        this.countDown = countDown;
     }
 
+
+
     public void run(){
-        int i=0;
-        try{
+         try{
             while(true){
                 Task task = task_buffer.read();
-                task.execute();
+                boolean latino = task.execute();
+                countDown.dec();
+                if (latino){
+                    int index = task.getTaskNumber() + 1;
+                    saveIndex(index);
+                    //System.out.println("El cuadrado " + index + " es latino.\n");
+                }
             }
         }catch(PoisonException e){
             System.out.println(e.getMessage());
         }
+
     }
 
     public void saveIndex(int index){

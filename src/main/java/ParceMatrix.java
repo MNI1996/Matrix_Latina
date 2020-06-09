@@ -13,6 +13,10 @@ class ParceMatrix implements Task {
         this.taskNumber = number;
     }
 
+    public int getTaskNumber(){
+        return taskNumber;
+    }
+
     public boolean execute() {
         List<Integer> numeritos = Arrays.stream(this.line.split(" "))
                 .map(st -> Integer.parseInt(st))
@@ -20,7 +24,7 @@ class ParceMatrix implements Task {
         ArrayList<Integer> res2 = new ArrayList<>(numeritos);
         int dimension = res2.remove(0);
 
-        System.out.println("Ejecutando: " + this.taskNumber);
+        //System.out.println("Ejecutando: " + this.taskNumber);
 
         Matrix matriz = new Matrix(dimension, res2);
 

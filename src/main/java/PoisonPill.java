@@ -7,7 +7,9 @@ class PoisonPill implements Task {
     }
 
     public boolean execute(){
-        throw new PoisonException("Se acabo lo que se daba");
+        throw new PoisonException("Ya terminé mi work");
     }
+
+    public int getTaskNumber() { return number;}
 
 }

@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class Main {
 
 
@@ -9,15 +11,22 @@ public class Main {
         re.open();
         wr.open();
         int cantCuadrados = Integer.parseInt(re.readLine());
+        CountDown cd = new CountDown(cantCuadrados);
+        ThreadPool th = new ThreadPool(5, 5, cd);
         for(int i = 0; i < cantCuadrados; i++){
             String cuadrado = re.readLine();
-            ParceMatrix pm= new ParceMatrix(cuadrado, i);
-            if(pm.execute()){
-                //(wr.write("El cuadrado " + (i + 1) + " es latino.\n");
-                System.out.println("El cuadrado " + (i + 1) + " es latino.\n");
-            }
+            th.launch(new ParceMatrix(cuadrado, i));
         }
         re.close();
+        th.stop();
+        OrderList orderList = th.getOrderList();
+        cd.zero();
+
+        List<Integer > outputList = orderList.getOrderList();
+
+        System.out.println(outputList);
+
+        wr.write(outputList.toString());
         wr.close();
     }
 }

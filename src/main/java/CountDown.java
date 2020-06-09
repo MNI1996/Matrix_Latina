@@ -8,6 +8,9 @@ public class CountDown {
 
     public synchronized void dec(){
         this.cont--;
+        if(cont == 0){
+            notifyAll();
+        }
     }
 
     public synchronized void zero() {
@@ -18,7 +21,6 @@ public class CountDown {
                 e.printStackTrace();
             }
         }
-        notifyAll();
     }
 
 }
