@@ -24,8 +24,8 @@ class ParceMatrix implements Task {
 
         Matrix matriz = new Matrix(dimension, res2);
 
-        System.out.println(matriz.getMatrix());
-        System.out.println(matriz.getTransposedMatrix());
+        //System.out.println(matriz.getMatrix());
+        //System.out.println(matriz.getTransposedMatrix());
 
         return !this.noMayoresQue(res2, dimension) &&
                cumpleCondiciónDeLatino(matriz.getMatrix(), dimension) &&
