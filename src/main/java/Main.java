@@ -12,7 +12,7 @@ public class Main {
         wr.open();
         int cantCuadrados = Integer.parseInt(re.readLine());
         CountDown cd = new CountDown(cantCuadrados);
-        ThreadPool th = new ThreadPool(5, 5, cd);
+        ThreadPool th = new ThreadPool(4, 5, cd);
         for(int i = 0; i < cantCuadrados; i++){
             String cuadrado = re.readLine();
             th.launch(new ParceMatrix(cuadrado, i));

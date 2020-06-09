@@ -20,14 +20,14 @@ public class LatinWorker extends Thread {
             while(true){
                 Task task = task_buffer.read();
                 boolean latino = task.execute();
-                countDown.dec();
                 if (latino){
                     int index = task.getTaskNumber() + 1;
                     saveIndex(index);
-                    //System.out.println("El cuadrado " + index + " es latino.\n");
+                    System.out.println("El cuadrado " + index + " es latino.\n");
                 }
+                countDown.dec();
             }
-        }catch(PoisonException e){
+         }catch(PoisonException e){
             System.out.println(e.getMessage());
         }
 
