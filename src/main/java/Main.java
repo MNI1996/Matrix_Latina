@@ -3,8 +3,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Reader re = new Reader("path" + "/inputs-ejemplo");
-        Writer wr = new Writer("path" + "/latin_squares");
+        Reader re = new Reader("C:\\Users\\usuario\\Desktop\\Matrix_Latina" + "/inputs-ejemplo");
+        Writer wr = new Writer("C:\\Users\\usuario\\Desktop\\Matrix_Latina" + "/latin_squares");
 
         re.open();
         int numberOfSquares = Integer.parseInt(re.readLine());
