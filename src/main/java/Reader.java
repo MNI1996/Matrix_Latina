@@ -25,17 +25,17 @@ public class Reader {
 
     public String readLine(){
         try{
-            nextLine = br.readLine();
+            this.nextLine = this.br.readLine();
         }catch (IOException e){
             e.printStackTrace();
             this.close();
         }
-        return nextLine;
+        return this.nextLine;
     }
 
     public void close(){
         try {
-            br.close();
+            this.br.close();
         }catch(IOException e){
             e.printStackTrace();
         }

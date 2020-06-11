@@ -1,32 +1,35 @@
-import java.util.List;
-
 public class Main {
 
 
     public static void main(String[] args) {
 
-        Reader re = new Reader("C:\\Users\\usuario\\Desktop\\Matrix_Latina\\inputs-ejemplo");
-        Writer wr = new Writer("C:\\Users\\usuario\\Desktop\\Matrix_Latina\\outputs-ejemplo");
+        Reader re = new Reader("path" + "/inputs-ejemplo");
+        Writer wr = new Writer("path" + "/latin_squares");
 
         re.open();
-        wr.open();
-        int cantCuadrados = Integer.parseInt(re.readLine());
-        CountDown cd = new CountDown(cantCuadrados);
-        ThreadPool th = new ThreadPool(4, 5, cd);
-        for(int i = 0; i < cantCuadrados; i++){
-            String cuadrado = re.readLine();
-            th.launch(new ParceMatrix(cuadrado, i));
+        int numberOfSquares = Integer.parseInt(re.readLine());
+
+        CountDown countDown = new CountDown(numberOfSquares);
+
+        OrderList oList = new OrderList();
+
+        ThreadPool th = new ThreadPool(4, 5);
+
+        for(int i = 0; i < numberOfSquares; i++){
+            String square = re.readLine();
+            th.launch(new ParseMatrix(square, i, oList, countDown));
         }
         re.close();
+
+
         th.stop();
-        OrderList orderList = th.getOrderList();
-        cd.zero();
 
-        List<Integer > outputList = orderList.getOrderList();
+        countDown.zero();
 
-        System.out.println(outputList);
+        System.out.println(oList.getOrderList());
 
-        wr.write(outputList.toString());
+        wr.open();
+        wr.write(oList.getOrderList().toString());
         wr.close();
     }
 }

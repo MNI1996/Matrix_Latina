@@ -1,15 +1,13 @@
-
-
 public class Buffer {
 
     private Task[] data;
-    private int N;
+    private int tamano;
     private int begin=0;
     private int end  =0;
 
     public Buffer(int tamano) {
-        this.N = tamano;
-        this.data = new Task[this.N + 1];
+        this.tamano = tamano;
+        this.data = new Task[this.tamano + 1];
     }
 
     public synchronized void write ( Task o ) {
@@ -39,6 +37,6 @@ public class Buffer {
 
     private boolean isEmpty() { return begin == end; }
     private boolean isFull() { return next(begin) == end; }
-    private int next(int i) { return (i + 1) % (this.N + 1); }
+    private int next(int i) { return (i + 1) % (this.tamano + 1); }
 }
 

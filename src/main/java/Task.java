@@ -1,4 +1,3 @@
-interface Task {
-    boolean execute();
-    int getTaskNumber();
+interface Task extends Runnable {
+    void run();
 }

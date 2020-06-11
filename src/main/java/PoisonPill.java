@@ -1,15 +1,13 @@
 class PoisonPill implements Task {
 
-    private int number;
+    private int taskNumber;
 
     public PoisonPill(int number){
-        this.number = number;
+        this.taskNumber = number;
     }
 
-    public boolean execute(){
-        throw new PoisonException("Ya terminé mi work");
+    public void run() {
+        throw new PoisonException("Finished");
     }
-
-    public int getTaskNumber() { return number;}
 
 }

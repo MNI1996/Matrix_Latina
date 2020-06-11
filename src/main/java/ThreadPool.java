@@ -2,20 +2,14 @@ public class ThreadPool {
 
     private Buffer task_buffer;
 
-    private OrderList oList;
-
-    private CountDown cd;
-
     private int cantWork;
 
-    public ThreadPool(int dimTaskBuffer, int cantWork, CountDown cd){
-        this.oList = new OrderList();
+    public ThreadPool(int dimTaskBuffer, int cantWork){
         this.task_buffer = new Buffer(dimTaskBuffer);
         this.cantWork = cantWork;
-        this.cd = cd;
 
-        for(Integer i : Utils.range(0, cantWork)){
-            new LatinWorker(task_buffer, oList, cd).start();
+        for(int i = 0; i != cantWork; i++){
+            new LatinWorker(task_buffer).start();
         }
     }
 
@@ -28,12 +22,8 @@ public class ThreadPool {
     }
 
     public void stop(){
-        for(int i=0; i<cantWork; i++){
+        for(int i=0; i < cantWork; i++){
             task_buffer.write(new PoisonPill(i));
         }
-    }
-
-    public OrderList getOrderList(){
-        return oList;
     }
 }
